@@ -53,8 +53,17 @@ app.get('/applicants/delete/:applicantID', function(req, res){
         if (err) {
             console.log(err);
         } else {
-            console.log(req.params.applicantID);
             res.redirect('/applicants');
+        }
+    });
+});
+
+app.get('/applicants/:applicantID', function(req, res) {
+    Applicant.findOne({_id: req.params.applicantID}, function(err, docs){
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('applicant-details', {applicant: docs});
         }
     });
 });

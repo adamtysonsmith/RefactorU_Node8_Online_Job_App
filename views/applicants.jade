@@ -7,15 +7,7 @@ block content
         ul#applications.list-unstyled
             for applicant in applicants
                 li
-                    div.applicant-container
-                        h4= applicant.name
-                        p Bio: #{applicant.bio}
-                        p Skills:
-                        ul
-                            for skill in applicant.skills
-                                li= skill
-                        br
-                        p Years Experience: #{applicant.years}
-                        p Why work here? #{applicant.why}
-                        a(href="/applicants/delete/#{applicant._id}").delete-applicant Delete
-                        hr
+                    h4
+                        a(href="/applicants/#{applicant._id}")= applicant.name
+                    a(href="/applicants/delete/#{applicant._id}").delete-applicant Delete
+                    hr

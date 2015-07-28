@@ -48,6 +48,17 @@ app.post('/applicant', function(req, res) {
     });
 });
 
+app.get('/applicants/delete/:applicantID', function(req, res){
+    Applicant.remove({_id: req.params.applicantID}, function(err, docs) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(req.params.applicantID);
+            res.redirect('/applicants');
+        }
+    });
+});
+
 var server = app.listen(8441, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
